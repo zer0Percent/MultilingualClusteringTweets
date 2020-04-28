@@ -8,7 +8,9 @@ Created on Fri Apr 17 21:46:39 2020
 
 """ Tweet loader """
 
-import Tweet as tw
+
+from TweetHandler import Tweet as tw
+
 import os
 
 class TweetLoader:
@@ -21,6 +23,20 @@ class TweetLoader:
     def get_tweets_entity(self, entity):
     
         return self.__tweets[entity]
+    
+    def get_tweets_language_entity(self, entity, lang):
+        
+        tweets_lang = []
+        
+        tweets_entity = self.__tweets[entity]
+
+        for tweet in tweets_entity:
+
+            if(tweet.getLang().lower() == lang):
+                
+                tweets_lang.append(tweet)
+                
+        return tweets_lang
         
     def load_tweets(self, path_dataset):
         
@@ -51,14 +67,5 @@ class TweetLoader:
             
                     
 
-path = "/home/alvaro-dev/Escritorio/tweets"
-
-loader = TweetLoader()
-
-loader.load_tweets(path)
-
-tweets_entity = loader.get_tweets_entity('RL2013D01E001.dat')
-
-print(len(tweets_entity))
 
         

@@ -1,6 +1,5 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-
 """ Un tweet almacenará la siguiente información:
     
     ---> ID
@@ -25,8 +24,8 @@ class Tweet:
         self.__corpus = corpus
 
         self.__corpusTokenized = []
-#        self.__setHashTags = set()
-#        self.__setMentions = set()
+        self.__hashtags = set()
+        self.__mentions = set()
         
 
     def getCorpus(self):
@@ -60,4 +59,15 @@ class Tweet:
     def getLang(self):
         
         return self.__lang
+    
+    def set_hashtags(self, hashtags):
+        self.__hashtags = hashtags
+        
+    def set_mentions(self, mentions):
+        self.__mentions = mentions
+    
+    def get_hashtags(self):
+        return self.__hashtags
+    def get_mentions(self):
+        return self.__mentions
 

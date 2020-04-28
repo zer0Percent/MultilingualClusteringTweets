@@ -49,13 +49,34 @@ class TweetTokenizer:
             cleanTokenAmp = self.__cleanAmps(corpusNonLowHyphen)
 
             cleanCorpus = cleanTokenAmp
-
-
+            
+            hashtags, mentions = self.__obtain_hashtags_mentions(cleanCorpus)
+            
+            tweet.set_hashtags(hashtags)
+            tweet.set_mentions(mentions)
             tweet.setCorpusTokenized(cleanCorpus)
             
             
           
   
+    def __obtain_hashtags_mentions(self, corpus_tokenized):
+
+        hashtags = set()
+        mentions = set()
+        for token in corpus_tokenized:
+
+            first_char = token[0]
+            
+            if (first_char == "#"): 
+                
+                hashtags.add(token)
+            
+            else:
+
+                if(first_char == "@"):
+                    mentions.add(token)
+
+        return hashtags, mentions
     #TODO diagramas
     def __cleanPunctuations(self, tweetCorpus):
         

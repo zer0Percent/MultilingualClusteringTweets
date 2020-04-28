@@ -84,19 +84,42 @@ class TweetCleaner:
             corpusSingleQuotless = self.__cleanQuoteTokens(corpusNumerless)
             corpusQuotless       = self.__cleanQuotes(corpusSingleQuotless) 
             
-            commonCleanCriteria = corpusQuotless
+            #commonCleanCriteria = corpusQuotless
             
 
-            corpusContractless = self.__cleanContractions(commonCleanCriteria)
+            #corpusContractless = self.__cleanContractions(commonCleanCriteria)
 
 #            corpusMentionless, hashTags, mentions = self.__deleteMentionHashtag(corpusContractless)
             
             #TODO 
-            corpusCleaned= self.__correctDuplicatedVocals(corpusContractless)
+            corpusCleaned= self.__correctDuplicatedVocals(corpusQuotless)
 
             tweet.setCorpusTokenized(corpusCleaned) 
      
+    
+    """" Al hacer esto, vamos a devolver el tf-idf vectorizer y ya lo tenemos pesado """
+    #TODO: Funciones para limpiar el vocabulario
+    def raw_tweets(self, tweets_to_normalize):
+        
+        print("todo")
+        
+    # returns a vocabulary without weird CHARS and links
+    def deleted_WL(self, tweets_to_normalize):
 
+        print("todo")
+        
+    # returns a vocabulary without rare CHARS, links and tokens \ df(token) < fixedNumber
+    def deleted_WLDF(self, tweets_to_normalize):
+        
+        print("todo")
+    
+    # returns a vocabulary without weird chars, links and hashtags/mentions
+    def deleted_WLDFMT(self, tweet_to_normalize):
+
+        print("todo")        
+        
+
+        
 
     
     def __correctDuplicatedVocals(self, corpusTokenized):

@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Apr 22 21:04:54 2020
+
+@author: alvaro-dev
+"""
+
+import TweetHandler.TweetLoader as twLoad
+import TweetManipulator.TweetNormalizer as twNor
+
+path = "/home/alvaro-dev/Escritorio/tweets"
+
+loader = twLoad.TweetLoader()
+
+loader.load_tweets(path)
+
+#tweets de una entidad en inglés
+tweets_entity = loader.get_tweets_language_entity('RL2013D01E001.dat', ' en') #loader.get_tweets_entity('RL2013D02E070.dat') 
+
+#Limpiar la entidad. No se eliminan stop-words
+normalizer = twNor.TweetNormalizer(tweets_entity)
+
+#Generar matriz tf-idf
+
+"""
+all_hashtags = set()
+for tweet in tweets_entity:
+    all_hashtags = all_hashtags.union(tweet.get_hashtags())
+
+#print(all_hashtags)
+
+## frequency hashtags
+
+freq_hashtags = dict();
+
+for hashtag in all_hashtags:
+    freq_hashtags[hashtag] = 0
+    
+for hashtag in all_hashtags:
+    for tweet in tweets_entity:
+        
+        if hashtag in tweet.get_hashtags():
+            freq_hashtags[hashtag] += 1
+
+pair_list = [(freq_hashtags[key], key) for key in freq_hashtags]
+
+print(pair_list)
+            """

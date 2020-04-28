@@ -51,7 +51,7 @@ class ClusteringModel:
             patronHashtagMention = r'[a-zA-Z.0-9+#+@\-/]*[a-zA-Z0-9+#+@\-/]'
             patronNoHashtagMention = r'[a-zA-Z.0-9\-/]*[a-zA-Z0-9\-/]'
             vectorizer = TfidfVectorizer(analyzer="word",
-                                 token_pattern = patronNoHashtagMention, #binary = True,                                
+                                 token_pattern = patronHashtagMention, #binary = True,                                
                                  smooth_idf = False, norm = None)
 
             if(algorithm == CLUSTER_1):
